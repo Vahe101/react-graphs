@@ -5,7 +5,7 @@ import reducers from "./store/chartsData/reducers/allReducers";
 import { Provider } from "react-redux";
 import { createStore, applyMiddleware } from "redux";
 import createSagaMiddleware from "redux-saga";
-import rootSaga from "./store/chartsData/sagas/index";
+import rootSaga from "./store/chartsData/sagas";
 import logger from "redux-logger";
 
 const sagaMiddleware = createSagaMiddleware();

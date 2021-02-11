@@ -1,4 +1,4 @@
-import { Types } from "../../chartsData/actions/index";
+import { Types } from "../../chartsData/actions";
 
 const initialState = {
   items: [],

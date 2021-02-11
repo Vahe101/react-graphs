@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
-import { getUsersRequest } from "../../store/chartsData/actions/index";
-import Button from "../../shared/Button/index";
+import { getUsersRequest } from "../../store/chartsData/actions";
+import Button from "../../shared/Button";
 import BarChart from "../BarChart";
 import SimpleBar from "../PieChart";
 
 const Connected = ({ getUsersRequest, users }) => {
-    const [check, setCheck] = useState(0);
+    const [contentVerification, setContentVerification] = useState(0);
     useEffect(() => {
         getUsersRequest();
     }, []);
@@ -14,26 +14,21 @@ const Connected = ({ getUsersRequest, users }) => {
     return (
         <div className="container">
             <div>
-                <Button value="PieChart" onClick={() => { setCheck(0) }} />
-                <Button value="SimpleBarChart" onClick={() => { setCheck(1) }} />
+                <Button value="PieChart" onClick={() => setContentVerification(0) } />
+                <Button value="SimpleBarChart" onClick={() => setContentVerification(1) } />
             </div>
             {users.items &&
                 (<>
-                    {check === 0 && (<div><BarChart data={users.items} /></div>)}
-                    {check === 1 && (<div><SimpleBar data={users.items} /></div>)}
+                    {contentVerification === 0 && (<div><BarChart data={users.items} /></div>)}
+                    {contentVerification === 1 && (<div><SimpleBar data={users.items} /></div>)}
                 </>)
             }
         </div>
     );
 }
 
-// export default connect(
-//     ({ users }) => ({ users }),
-//     {
-//         getUsersRequest
-//     }
-// )(Connected);
 const mapStateToProps = () => ({ users }) => ({ users });
+
 const mapDispatchToProps = { getUsersRequest };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Connected);

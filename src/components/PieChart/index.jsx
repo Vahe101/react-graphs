@@ -4,7 +4,7 @@ import generateRandomColor from "../../shared/colorsGenerate";
 
 const PieChart = ({ data }) => {
     const colors = generateRandomColor();
-    const [backgroundColor, setBacgroundColor] = useState(colors);
+    const [backgroundColor, setBackgroundColor] = useState(colors);
     const state = ({
         labels: [
             "First",
@@ -45,12 +45,12 @@ const PieChart = ({ data }) => {
         responsive: true,
     });
 
-    const click = (event) => {
+    const onClickEvent = (event) => {
         if (event.length > 0) {
             const randomColor = (generateRandomColor(1))[0];
             const index = event[0]._index;
             colors.splice(index, 1, randomColor);
-            setBacgroundColor(colors);
+            setBackgroundColor(colors);
         }
     }
 
@@ -60,7 +60,7 @@ const PieChart = ({ data }) => {
                 type="pie"
                 data={state}
                 options={options}
-                onElementsClick={click}
+                onElementsClick={onClickEvent}
             />
         </div>
     )
