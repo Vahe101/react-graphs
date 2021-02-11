@@ -45,10 +45,10 @@ const PieChart = ({ data }) => {
         responsive: true,
     });
 
-    const onClickEvent = (event) => {
-        if (event.length > 0) {
+    const onClickEvent = (elements) => {
+        if (elements.length > 0) {
             const randomColor = (generateRandomColor(1))[0];
-            const index = event[0]._index;
+            const index = elements[0]._index;
             colors.splice(index, 1, randomColor);
             setBackgroundColor(colors);
         }
