@@ -37,7 +37,7 @@ const BarChart = ({ data }) => {
         responsive: true,
     });
 
-    const onClickEvent = (elements) => {
+    const onDiagramClick = (elements) => {
         if (elements.length > 0) {
             const randomColor = (generateRandomColor(1))[0];
             const index = elements[0]._index;
@@ -52,7 +52,7 @@ const BarChart = ({ data }) => {
                 type="bar"
                 data={state}
                 options={options}
-                onElementsClick={onClickEvent}
+                onElementsClick={onDiagramClick}
             />
         </div>
     );
