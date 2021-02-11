@@ -6,7 +6,6 @@ import { Provider } from "react-redux";
 import { createStore, applyMiddleware } from "redux";
 import createSagaMiddleware from "redux-saga";
 import rootSaga from "./store/chartsData/sagas/index";
-import reportWebVitals from "./reportWebVitals";
 import logger from "redux-logger";
 
 const sagaMiddleware = createSagaMiddleware();
@@ -19,5 +18,3 @@ ReactDOM.render(
   </Provider>,
   document.getElementById("root")
 );
-
-reportWebVitals();

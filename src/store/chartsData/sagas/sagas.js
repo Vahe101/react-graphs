@@ -5,7 +5,12 @@ import * as api from "../api/index";
 function* getUsers() {
   try {
     const result = yield call(api.getData);
-    yield put(actions.getUsersSuccess(result.data));
+    if (result.data.length > 0) {
+      yield put(actions.getUsersSuccess(result.data));
+    }
+    else {
+      return getUsers();
+    }
   } catch (error) {
     console.error(error);
   }

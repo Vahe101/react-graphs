@@ -1,19 +1,9 @@
 import React, { useState } from "react";
 import { Pie } from "react-chartjs-2";
-
-import "./charts.scss";
+import generateRandomColor from "../../shared/colorsGenerate";
 
 const PieChart = ({ data }) => {
-    const colors = [
-        "#B21F00",
-        "#C9DE00",
-        "#2FDE00",
-        "#B54F00",
-        "#Bh7F00",
-        "#B25800",
-        "#B2c800",
-        "#B2h800",
-    ]
+    const colors = generateRandomColor();
     const [backgroundColor, setBacgroundColor] = useState(colors);
     const state = ({
         labels: [
@@ -27,18 +17,18 @@ const PieChart = ({ data }) => {
             "Eighth",
         ],
         datasets: [{
-            data: data,
-            backgroundColor:backgroundColor,
+            backgroundColor: backgroundColor,
             hoverBackgroundColor: [
-                "#501800",
-                "#4B5000",
-                "#175000",
-                "#e3e3e3",
-                "#e3e3d4",
-                "#e3e3t4",
-                "#e3e3g6",
-                "#e3e376",
+                "#50j600",
+                "#4B7800",
+                "#8nn788",
+                "#003943",
+                "#350258",
+                "#CCA078",
+                "#000B12",
+                "#000878",
             ],
+            data: data,
         }],
     });
 
@@ -52,11 +42,12 @@ const PieChart = ({ data }) => {
             display: true,
             position: "right"
         },
+        responsive: true,
     });
 
     const click = (event) => {
         if (event.length > 0) {
-            const randomColor = "#" + Math.floor(Math.random() * 16777215).toString(16);
+            const randomColor = (generateRandomColor(1))[0];
             const index = event[0]._index;
             colors.splice(index, 1, randomColor);
             setBacgroundColor(colors);

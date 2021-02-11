@@ -1,39 +1,27 @@
 import React, { useState } from "react";
 import { Bar } from "react-chartjs-2";
-
-import "./index.scss";
+import generateRandomColor from "../../shared/colorsGenerate";
 
 const BarChart = ({ data }) => {
-    const colors = [
-        "#B21F00",
-        "#C9DE00",
-        "#2FDE00",
-        "#00A6B4",
-        "#6800B4",
-        "#6AA0B4",
-        "#680BB4",
-        "#6FFFF4",
-    ];
+    const colors = generateRandomColor();
     const [backgroundColor, setBacgroundColor] = useState(colors);
     const state = ({
         labels: ["Russia", "Canada", "USA", "China", "Brazil", "Australia", "India", "Others"],
-        datasets: [
-            {
-                label: "Rainfall",
-                backgroundColor: backgroundColor,
-                hoverBackgroundColor: [
-                    "#501800",
-                    "#4B5000",
-                    "#175000",
-                    "#003350",
-                    "#35014F",
-                    "#CCA0B4",
-                    "#000BB4",
-                    "#000000",
-                ],
-                data: data,
-            }
-        ]
+        datasets: [{
+            label: "Rainfall",
+            backgroundColor: backgroundColor,
+            hoverBackgroundColor: [
+                "#50j600",
+                "#4B7800",
+                "#175928",
+                "#003943",
+                "#350258",
+                "#CCA078",
+                "#000B12",
+                "#000878",
+            ],
+            data: data,
+        }]
     });
 
     const options = ({
@@ -51,7 +39,7 @@ const BarChart = ({ data }) => {
 
     const click = (event) => {
         if (event.length > 0) {
-            const randomColor = "#" + Math.floor(Math.random() * 16777215).toString(16);
+            const randomColor = (generateRandomColor(1))[0];
             const index = event[0]._index;
             colors.splice(index, 1, randomColor);
             setBacgroundColor(colors);
